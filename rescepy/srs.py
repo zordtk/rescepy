@@ -26,7 +26,7 @@ class SRS(object):
                 os.makedirs(outdir)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
         sp = subprocess.Popen('%s \"%s\" \"%s\" -o \"%s\" -y' % (self.binary, self.filename, infile, outdir), shell=True, stdin=subprocess.PIPE)
@@ -37,7 +37,7 @@ class SRS(object):
     def info(self):
         rgft = resample.file_type_info(self.filename)
         if rgft == 'Unknown':
-            print '\'%s\' is unknown file type.' % (self.filename)
+            print('\'%s\' is unknown file type.' % (self.filename))
             return False
 
         rscf = resample.sample_class_factory(str(rgft))

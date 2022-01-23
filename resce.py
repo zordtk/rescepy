@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 # Author: Joseph Wiseman <joswiseman@cock.li>
 # URL: https://github.com/dryes/rescepy/
@@ -38,7 +38,7 @@ def init_argparse():
 
 def dircheck(inputdir):
     if re.search(r'[._-](dir|id3|nfo|sample|(vob)?sub(title)?s?|track).?(fix|pack)[._-]', inputdir, re.IGNORECASE) is not None:
-        print '\'%s\' detected as fix, skipping.' % (inputdir)
+        print('\'%s\' detected as fix, skipping.' % (inputdir))
         return False
 
     return None
@@ -62,7 +62,7 @@ def prepare(inputdir):
             shutil.move(f, inputdir)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False 
 
     for d in dirs[0]:
@@ -70,7 +70,7 @@ def prepare(inputdir):
             os.rmdir(d)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     return None
@@ -85,7 +85,7 @@ def getsrr(srrfile, dirname, srrdir, download):
             shutil.copy(srrfile, os.getcwd())
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     return True
@@ -129,7 +129,7 @@ def movesubs(subsfiles, storedfiles):
             os.mkdir(subsdir)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     if subsdir != defaultdir and os.path.isdir(defaultdir):
@@ -139,7 +139,7 @@ def movesubs(subsfiles, storedfiles):
             shutil.rmtree(defaultdir)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     for f in set(subsfiles):
@@ -149,7 +149,7 @@ def movesubs(subsfiles, storedfiles):
         except:
             None
             #if len(str(sys.exc_info()[1])) > 0:
-            #    print sys.exc_info()[1]
+            #    print(sys.exc_info()[1])
             #return False
 
     return subsdir
@@ -194,7 +194,7 @@ def rarsexist(rarlist, subsfiles, isvideobool, inputdir, args):
                 os.unlink(os.path.join(os.getcwd(), f))
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
     return None
@@ -216,7 +216,7 @@ def deleteothers(keeplist, srrfile):
                 os.rmdir(o)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     return None
@@ -257,7 +257,7 @@ def recreatesample(srr, srrlist, args):
                 os.mkdir(sampledir)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
         if sampledir != defaultdir and os.path.isdir(defaultdir):
@@ -267,7 +267,7 @@ def recreatesample(srr, srrlist, args):
                 shutil.rmtree(defaultdir)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
         if os.path.isfile(os.path.join(os.getcwd(), srsinfo[0])):
@@ -275,7 +275,7 @@ def recreatesample(srr, srrlist, args):
                 shutil.move(os.path.join(os.getcwd(), srsinfo[0]), sampledir)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
         sample = None
@@ -283,14 +283,14 @@ def recreatesample(srr, srrlist, args):
             sample = os.path.join(sampledir, srsinfo[0])
 
         if sample is not None:
-            print '\'%s\' found, sample exists.' % (os.path.dirname(sample).split(os.sep)[-1] + os.sep + sample.split(os.sep)[-1])
+            print('\'%s\' found, sample exists.' % (os.path.dirname(sample).split(os.sep)[-1] + os.sep + sample.split(os.sep)[-1]))
 
             if crc(sample) == srsinfo[2] and args['force'] == False:
                 try:
                     os.unlink(srsfile)
                 except:
                     if len(str(sys.exc_info()[1])) > 0:
-                        print sys.exc_info()[1]
+                        print(sys.exc_info()[1])
                     return False
 
                 continue
@@ -299,7 +299,7 @@ def recreatesample(srr, srrlist, args):
                 os.unlink(sample)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
         srsinput = None
@@ -316,7 +316,7 @@ def recreatesample(srr, srrlist, args):
             os.unlink(srsfile)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     return None
@@ -346,7 +346,7 @@ def recreatetags(srrlist, srrfile, args):
                     os.mkdir(outdir)
                 except:
                     if len(str(sys.exc_info()[1])) > 0:
-                        print sys.exc_info()[1]
+                        print(sys.exc_info()[1])
                     return False
         else:
             outdir = os.getcwd()
@@ -357,7 +357,7 @@ def recreatetags(srrlist, srrfile, args):
         elif os.path.isfile(os.path.join(os.getcwd(), srsinfo[0])):
             infile = os.path.join(os.getcwd(), srsinfo[0])
         else:
-            print 'Input file not found: %s' % (srsinfo[0])
+            print('Input file not found: %s' % (srsinfo[0]))
 
         if infile is None:
             infile = os.path.join(outdir, srsinfo[0])
@@ -368,7 +368,7 @@ def recreatetags(srrlist, srrfile, args):
                         shutil.copy(srsfile, infile)
                     except:
                         if len(str(sys.exc_info()[1])) > 0:
-                            print sys.exc_info()[1]
+                            print(sys.exc_info()[1])
                         return False
 
                     if srs.recreate(infile, outdir=outdir) == True:
@@ -378,7 +378,7 @@ def recreatetags(srrlist, srrfile, args):
                             os.unlink(infile)
                         except:
                             if len(str(sys.exc_info()[1])) > 0:
-                                print sys.exc_info()[1]
+                                print(sys.exc_info()[1])
                             return False
 
         elif srs.recreate(infile, outdir=outdir) == False:
@@ -389,7 +389,7 @@ def recreatetags(srrlist, srrfile, args):
                 os.unlink(infile)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
     if sfvverify(args, opts='-r') == False:
@@ -415,7 +415,7 @@ def deletesrs():
                    os.unlink(os.path.join(r, srs))
                except:
                    if len(str(sys.exc_info()[1])) > 0:
-                       print sys.exc_info()[1]
+                       print(sys.exc_info()[1])
                    return False
 
     return True
@@ -430,7 +430,7 @@ def srrdbget(dirname, srrdir):
         urllib.urlretrieve('http://www.srrdb.com/download/srr/%s' % (dirname), srrfile)
     except:
         if len(str(sys.exc_info()[1])) > 0:
-            print sys.exc_info()[1]
+            print(sys.exc_info()[1])
         return False
 
     erm = None
@@ -443,15 +443,15 @@ def srrdbget(dirname, srrdir):
             erm = 'not found.'
 
     if erm is not None:
-        print '%s' % (erm)
+        print('%s' % (erm))
         try:
             os.unlink(srrfile)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
         return False
 
-    print 'downloaded successfully.\n'
+    print('downloaded successfully.\n')
     return True
 
 def srrdbidentify(crc):
@@ -462,13 +462,13 @@ def srrdbidentify(crc):
         response = json.load(urllib.urlopen('http://www.srrdb.com/api/search/archive-crc:%s' % (crc)))
     except:
         if len(str(sys.exc_info()[1])) > 0:
-            print sys.exc_info()[1]
+            print(sys.exc_info()[1])
 
     if not response or response['resultsCount'] != '1':
-        print 'not found.'
+        print('not found.')
         return False
 
-    print 'found: %s' % (response['results'][0]['release'])
+    print('found: %s' % (response['results'][0]['release']))
     return response['results'][0]['release']
 
 def recreatesubs(subsdir, srrfile, args):
@@ -482,7 +482,7 @@ def recreatesubs(subsdir, srrfile, args):
             os.unlink(srrfile)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
         return True
 
     innersrrfile = None
@@ -508,7 +508,7 @@ def recreatesubs(subsdir, srrfile, args):
             os.unlink(os.path.join(subsdir, f))
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
 
     return success
 
@@ -523,7 +523,7 @@ def main(inputdir, args):
         os.chdir(inputdir)
     except:
         if len(str(sys.exc_info()[1])) > 0:
-            print sys.exc_info()[1]
+            print(sys.exc_info()[1])
         return False
 
     if args['srr_dir'] == None:
@@ -535,7 +535,7 @@ def main(inputdir, args):
                 os.makedirs(srrdir)
             except:
                 if len(str(sys.exc_info()[1])) > 0:
-                    print sys.exc_info()[1]
+                    print(sys.exc_info()[1])
                 return False
 
     dirname = inputdir.split(os.sep)[-1]
@@ -544,7 +544,7 @@ def main(inputdir, args):
     if getsrr(srrfile, dirname, srrdir, args['download']) == False:
         return False
     if args['no_process'] == True:
-        print '\'%s.srr\' exists.' % (dirname)
+        print('\'%s.srr\' exists.' % (dirname))
         return True
     srrfile = os.path.join(os.getcwd(), dirname + '.srr')
 
@@ -584,11 +584,11 @@ def main(inputdir, args):
     for f in subsfiles:
         if re.search(r'\.srr$', f, re.IGNORECASE) is not None:
             if recreatesubs(subsdir, f, args) == False:
-                print 'Error recreating subtitle rars in: %s' % (subsdir.split(os.sep)[-1])
+                print('Error recreating subtitle rars in: %s' % (subsdir.split(os.sep)[-1]))
 
     rar = rarexist(srrlist, getrarfiles(subsfiles))
     if rar is not None:
-        print '\'%s\' found, rars exist.' % (rar)
+        print('\'%s\' found, rars exist.' % (rar))
         rarsexistbool = rarsexist(srrlist[2], subsfiles, isvideobool, inputdir, args)
         if rarsexistbool == False:
             return False
@@ -620,7 +620,7 @@ def main(inputdir, args):
             os.unlink(srrfile)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             return False
 
     if sfvverify(args, opts='-r') == False:
@@ -636,7 +636,7 @@ if __name__ == '__main__':
         if not os.path.isfile(f) or re.search(r'\.(flac|mp[23]|ogg)$', f, re.IGNORECASE) is not None:
             continue
 
-        print '\nProcessing: %s\n' % (f.split(os.sep)[-1])
+        print('\nProcessing: %s\n' % (f.split(os.sep)[-1]))
         dirname = srrdbidentify(crc(f))
         if dirname is False:
             erc = (erc+1)
@@ -649,7 +649,7 @@ if __name__ == '__main__':
             shutil.move(f, dirname)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
 
         if dirname not in args['input']:
             args['input'].append(dirname)
@@ -659,19 +659,19 @@ if __name__ == '__main__':
             os.chdir(cwd)
         except:
             if len(str(sys.exc_info()[1])) > 0:
-                print sys.exc_info()[1]
+                print(sys.exc_info()[1])
             break
         d = os.path.abspath(d)
         if not os.path.isdir(d):
             continue
 
-        print '\nProcessing: %s\n' % (d.split(os.sep)[-1])
+        print('\nProcessing: %s\n' % (d.split(os.sep)[-1]))
         if main(d, args) == False:
             erc = (erc+1)
             erd.append(d)
 
     if erc > 0:
-        print '\nErrors: %s' % (erc)
+        print('\nErrors: %s' % (erc))
         for d in erd:
-            print '%s' % (d)
+            print('%s' % (d))
         sys.exit(1)

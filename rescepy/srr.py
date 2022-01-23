@@ -40,7 +40,7 @@ class SRR(object):
         return True if sp.returncode == 0 else False
 
     def verify(self, opts=''):
-        print 'Verifying input files ...'
+        print('Verifying input files ...')
         sp = subprocess.Popen('%s \"%s\" %s -q -r -y' % (self.binary, self.filename, opts), shell=True, stdin=subprocess.PIPE)
         sp.communicate()
 
