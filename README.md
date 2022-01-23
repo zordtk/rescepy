@@ -13,8 +13,7 @@ a cross-platform python3 script for automated srr (rescene) verification and rec
 * [Python3][python]
 * [pyReScene][pyrescene]
 * [UnRAR][unrar]
-* [cksfv][cksfv]
-
+* [chksfv][chksfv]
 
 ## usage:
 
@@ -36,3 +35,4 @@ a cross-platform python3 script for automated srr (rescene) verification and rec
 [pyrescene]: https://bitbucket.org/Gfy/pyrescene
 [unrar]: http://www.rarlab.com/
 [cfv]: http://cfv.sourceforge.net/
+[chksfv]: https://zakalwe.fi/~shd/foss/cksfv/
