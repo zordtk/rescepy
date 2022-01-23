@@ -11,7 +11,7 @@ class SRS(object):
         self.filename = filename
         if binary == None:
             if os.name == 'posix':
-                self.binary = '/usr/bin/srs.py'
+                self.binary = 'srs.py'
             elif os.name == 'nt':
                 self.binary = 'pysrs'
         else:

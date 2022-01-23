@@ -12,7 +12,7 @@ class UnRAR(object):
         self.password = password
         if binary == None:
             if os.name == 'posix':
-                self.binary = ('/usr/bin/unrar')
+                self.binary = ('unrar')
             elif os.name == 'nt':
                 self.binary = ('unrar')
         else:
