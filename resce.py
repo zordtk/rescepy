@@ -460,7 +460,7 @@ def srrdbidentify(crc):
     sys.stdout.flush()
     try:
         socket.setdefaulttimeout(30)
-        response = json.load(urllib.urlopen('http://www.srrdb.com/api/search/archive-crc:%s' % (crc)))
+        response = json.load(urllib.urlopen('https://www.srrdb.com/api/search/archive-crc:%s' % (crc)))
     except:
         if len(str(sys.exc_info()[1])) > 0:
             print(sys.exc_info()[1])
