@@ -1,7 +1,7 @@
-rescepy
+rescepy Python 3 Fork
 =====
 
-a cross-platform python2 script for automated srr (rescene) verification and reconstruction.
+a cross-platform python3 script for automated srr (rescene) verification and reconstruction.
 
 * fetches srrs from: http://www.srrdb.com
 * verifies sfv files and reconstructs rars and samples if required.
@@ -10,15 +10,15 @@ a cross-platform python2 script for automated srr (rescene) verification and rec
 
 ## dependencies:
 
-* [Python2][python]
+* [Python3][python]
 * [pyReScene][pyrescene]
 * [UnRAR][unrar]
-* [cfv][cfv]
+* [cksfv][cksfv]
 
 
 ## usage:
 
-* python2 resce.py [--opts] input1 [input2] ...
+* python3 resce.py [--opts] input1 [input2] ...
 
 * windows guide: http://rescene.wikidot.com/rescepy
 
