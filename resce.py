@@ -6,12 +6,13 @@
 # This file is part of rescepy.
 #
 
-import argparse,json,os,re,shutil,socket,sys,urllib,zlib
+import argparse,json,os,re,shutil,socket,sys,zlib,urllib
 
 from rescepy.cfv import CFV
 from rescepy.srr import SRR
 from rescepy.srs import SRS
 from rescepy.unrar import UnRAR
+from urllib.request import urlretrieve
 
 
 def init_argparse():
@@ -427,7 +428,7 @@ def srrdbget(dirname, srrdir):
     sys.stdout.flush()
     try:
         socket.setdefaulttimeout(30)
-        urllib.urlretrieve('http://www.srrdb.com/download/srr/%s' % (dirname), srrfile)
+        urllib.request.urlretrieve('https://www.srrdb.com/download/srr/%s' % (dirname), srrfile)
     except:
         if len(str(sys.exc_info()[1])) > 0:
             print(sys.exc_info()[1])
